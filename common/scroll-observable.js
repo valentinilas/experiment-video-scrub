@@ -20,16 +20,25 @@ function ScrollObservable() {
 ScrollObservable.prototype._process = function() {
     const viewportHeight = document.documentElement.clientHeight;
     const documentHeight = document.body.clientHeight;
+    // const documentHeight = document.querySelector('#content').clientHeight;
+
+
+    var start = window.pageYOffset + document.querySelector('.scroll-container').getBoundingClientRect().top;
+    let height = document.querySelector('.scroll-container').clientHeight;
+
     const scrolled = Math.max(
         window.scrollY,
         window.pageYOffset,
         document.documentElement.scrollTop,
         document.body.scrollTop
-    );
+    ) - start;
 
-    const scrolledPercentage = Math.round((100 * (100 * scrolled)) / (documentHeight - viewportHeight)) / 100;
+    const scrolledPercentage = Math.round((100 * (100 * scrolled)) / (height - viewportHeight)) / 100;
+    console.log(scrolledPercentage);
+    if (scrolledPercentage >= 0 && scrolledPercentage <= 100) {
+        this.publish(scrolledPercentage);
+    }
 
-    this.publish(scrolledPercentage);
 };
 
 ScrollObservable.prototype.subscribe = function(observer) {

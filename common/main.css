@@ -2,9 +2,8 @@ html,
 body {
     margin: 0;
     padding: 0 10px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-        'Helvetica Neue', sans-serif;
-    height: 3000px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    height: 6000px;
     background: #000;
     color: #eee;
 }
@@ -19,8 +18,14 @@ a {
 }
 
 #content {
-    position: fixed;
-    max-width: calc(100% - 20px);
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+.some-content {
+    height: 1500px;
+    background-color: beige;
 }
 
 .video-container,
@@ -37,4 +42,9 @@ a {
 
 .cursor-loading {
     cursor: progress;
+}
+
+.scroll-container {
+    height: 230vh;
+    position: relative;
 }
